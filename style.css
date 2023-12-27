@@ -1,0 +1,16 @@
+.all {
+    text-align: center;
+}   
+
+body {
+    background-color: rgb(223, 223, 231);
+    color: goldenrod;
+}
+
+.inp {
+    border: none;
+    border-bottom: 3px solid gray;
+    background-color: rgb(223, 223, 231);
+    color: green;
+    width: 30%;
+}
