@@ -14,15 +14,15 @@ class Game{
         this.text1 = text1;
         this.text2 = text2;
 
-        this.lable1.innerHTML = text1
-        this.lable2.innerHTML = text2
+        this.lable1.innerHTML = text1;
+        this.lable2.innerHTML = text2;
 
         addEventListener("keypress", (event) => {
             if (event.key === text2[0]) {
-                text1 += text2[0]
-                this.lable1.innerHTML = text1
-                this.lable2.innerHTML = text2
-            }
+                text1 += text2[0];
+                this.lable1.innerHTML = text1;
+                this.lable2.innerHTML = text2;
+            };
         });
     };
 };
