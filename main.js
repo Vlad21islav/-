@@ -20,6 +20,7 @@ class Game{
         addEventListener("keypress", (event) => {
             if (event.key === text2[0]) {
                 text1 += text2[0];
+                text2 = text2.slice(1, -1)
                 this.lable1.innerHTML = text1;
                 this.lable2.innerHTML = text2;
             };
