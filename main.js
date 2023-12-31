@@ -6,6 +6,7 @@ class Game{
         this.info = document.getElementById('info');
         this.lable1 = document.getElementById('lable1');
         this.lable2 = document.getElementById('lable2');
+        this.text_length = 0;
 
         if (this.info === null) throw new Error('Не найден элемент с id "info"');
         if (this.lable1 === null) throw new Error('Не найден элемент с id "lable1"');
@@ -15,14 +16,17 @@ class Game{
         this.text2 = text2;
 
         this.lable1.innerHTML = text1;
-        this.lable2.innerHTML = text2;
+        this.lable2.innerHTML = text2.slice(0, 30);
 
         addEventListener("keypress", (event) => {
             if (event.key === text2[0]) {
+                if (this.text_length < 10) {
+                    this.text_length++;
+                };
                 text1 += text2[0];
-                text2 = text2.slice(1, )
-                this.lable1.innerHTML = text1;
-                this.lable2.innerHTML = text2;
+                text2 = text2.slice(1, );
+                this.lable1.innerHTML = text1.slice(-10, );
+                this.lable2.innerHTML = text2.slice(0, 30 - this.text_length);
             };
         });
     };
