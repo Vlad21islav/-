@@ -5,7 +5,6 @@ class Game{
         this.info = document.getElementById('info');
         this.lable1 = document.getElementById('lable1');
         this.lable2 = document.getElementById('lable2');
-        this.text_length = 0;
 
         if (this.info === null) throw new Error('Не найден элемент с id "info"');
         if (this.lable1 === null) throw new Error('Не найден элемент с id "lable1"');
