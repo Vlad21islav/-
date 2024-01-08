@@ -14,18 +14,21 @@ class Game{
         this.text1 = '';
         this.text2 = text;
 
+        this.totalLength = 30;
+        this.maxFirstLength = 10;
+
         this.lable1.innerHTML = this.text1;
-        this.lable2.innerHTML = this.text2.slice(0, 30);
+        this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
 
         addEventListener("keypress", (event) => {
             if (event.key === this.text2[0]) {
-                if (this.text_length < 10) {
+                if (this.text_length < this.maxFirstLength) {
                     this.text_length++;
                 };
                 this.text1 += this.text2[0];
                 this.text2 = this.text2.slice(1, );
-                this.lable1.innerHTML = this.text1.slice(-10, );
-                this.lable2.innerHTML = this.text2.slice(0, 30 - this.text_length);
+                this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
+                this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text_length);
             };
         });
     };
