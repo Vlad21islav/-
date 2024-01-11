@@ -25,7 +25,7 @@ class Game{
                 this.text2 = this.text2.slice(1, );
                 this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
                 if (this.text1.length < this.maxFirstLength) {
-                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text_length);
+                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text1.length);
                 } else{
                     this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
                 };
