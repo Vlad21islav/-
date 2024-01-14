@@ -15,6 +15,7 @@ class Game{
 
         this.totalLength = 30;
         this.maxFirstLength = 10;
+        this.textLast = 0;
 
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
@@ -23,9 +24,14 @@ class Game{
             if (event.key === this.text2[0]) {
                 this.text1 += this.text2[0];
                 this.text2 = this.text2.slice(1, );
-                this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
+                if (this.text2.length <= this.totalLength - this.maxFirstLength) {
+                    this.lable1.innerHTML = this.text1.slice(-(this.maxFirstLength + this.textLast), );
+                    this.textLast++;
+                } else {
+                    this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
+                };
                 if (this.text1.length < this.maxFirstLength) {
-                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text_length);
+                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text1.length);
                 } else{
                     this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
                 };
