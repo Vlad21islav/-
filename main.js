@@ -27,7 +27,7 @@ class Game{
 
         setInterval(() => {
             this.speed = this.clicks
-            this.info.innerHTML = `${this.text1.length + 1}/${this.text2.length + 1}, ${this.rounded((this.text1.length + 1)/(this.text2.length + 1)) * 100 + '%'}, ${this.speed}`;
+            this.info.innerHTML = `${this.text1.length + 1}/${this.text2.length + 1}, ${this.rounded((this.text1.length + 1)/(this.text2.length + 1)) * 100 + '%'}, ${this.speed}, ${this.mistakes}`;
             this.clicks = 0;
         }, 1000*1);
 
