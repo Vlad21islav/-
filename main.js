@@ -48,7 +48,7 @@ class Game{
                     this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
                 };
             } else if (this.simbols.indexOf(event.key) === -1) {
-                console.log('ошибка')
+                this.mistakes++;
             };
         });
     };
