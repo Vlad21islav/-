@@ -10,18 +10,30 @@ class Game{
         if (this.lable1 === null) throw new Error('Не найден элемент с id "lable1"');
         if (this.lable2 === null) throw new Error('Не найден элемент с id "lable2"');
 
+        this.simbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
         this.text1 = '';
         this.text2 = text;
 
         this.totalLength = 30;
         this.maxFirstLength = 10;
         this.textLast = 0;
+        this.speed = 0;
+        this.clicks = 0;
+        this.mistakes = 0;
 
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
+        this.info.innerHTML = `0/${this.text2.length + 1}, ${this.rounded(0/(this.text2.length + 1)) * 100 + '%'}, ${this.speed}, ${this.mistakes}`;
+
+        setInterval(() => {
+            this.speed = this.clicks
+            this.info.innerHTML = `${this.text1.length + 1}/${this.text2.length + 1}, ${this.rounded((this.text1.length + 1)/(this.text2.length + 1)) * 100 + '%'}, ${this.speed}`;
+            this.clicks = 0;
+        }, 1000*1);
 
         addEventListener("keypress", (event) => {
             if (event.key === this.text2[0]) {
+                this.clicks += 1;
                 this.text1 += this.text2[0];
                 this.text2 = this.text2.slice(1, );
                 if (this.text2.length <= this.totalLength - this.maxFirstLength) {
@@ -35,8 +47,14 @@ class Game{
                 } else{
                     this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
                 };
+            } else if (this.simbols.indexOf(event.key) === -1) {
+                console.log('ошибка')
             };
         });
+    };
+
+    rounded(number){
+        return Math.round(parseFloat(number) * 100) / 100;
     };
 };
 
