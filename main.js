@@ -21,8 +21,8 @@ class Game{
         this.mistakes = 0;
         this.written = this.text1.length;
         this.textLength = this.text2.length;
-        this.fraction = this.rounded((this.text1.length)/(this.text2.length)) * 100
-        this.info.innerHTML = `написано: ${this.written}/${this.textLength}слов, доля: ${this.fraction}%, скорость: ${this.speed}знаков/секунду, ошибок: ${this.mistakes}`;
+        this.fraction = this.rounded((this.written)/(this.textLength)) * 100
+        this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
 
 
         this.lable1.innerHTML = this.text1;
@@ -30,8 +30,8 @@ class Game{
 
         setInterval(() => {
             this.written = this.text1.length;
-            this.fraction = this.rounded((this.text1.length)/(this.text2.length)) * 100
-            this.info.innerHTML = `написано: ${this.written}/${this.textLength}слов, доля: ${this.fraction}%, скорость: ${this.speed}знаков/секунду, ошибок: ${this.mistakes}`;
+            this.fraction = this.rounded((this.written)/(this.textLength)) * 100
+            this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
             this.speed = 0;
         }, 1000);
 
