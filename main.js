@@ -18,27 +18,26 @@ class Game{
         this.maxFirstLength = 10;
         this.textLast = 0;
         this.speed = 0;
-        this.clicks = 0;
         this.mistakes = 0;
         this.written = this.text1.length;
         this.textLength = this.text2.length;
-        this.percent = this.rounded((this.text1.length)/(this.text2.length)) * 100
+        this.fraction = this.rounded((this.text1.length)/(this.text2.length)) * 100
+        this.info.innerHTML = `написано: ${this.written}/${this.textLength}слов, доля: ${this.fraction}%, скорость: ${this.speed}знаков/секунду, ошибок: ${this.mistakes}`;
 
 
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
 
         setInterval(() => {
-            this.speed = this.clicks
             this.written = this.text1.length;
-            this.percent = this.rounded((this.text1.length)/(this.text2.length)) * 100
-            this.info.innerHTML = `написано: ${this.written}/${this.textLength}слов, доля: ${this.percent}%, скорость: ${this.speed}знаков/секунду, ошибок: ${this.mistakes}`;
-            this.clicks = 0;
+            this.fraction = this.rounded((this.text1.length)/(this.text2.length)) * 100
+            this.info.innerHTML = `написано: ${this.written}/${this.textLength}слов, доля: ${this.fraction}%, скорость: ${this.speed}знаков/секунду, ошибок: ${this.mistakes}`;
+            this.speed = 0;
         }, 1000);
 
         addEventListener("keypress", (event) => {
             if (event.key === this.text2[0]) {
-                this.clicks += 1;
+                this.speed += 1;
                 this.text1 += this.text2[0];
                 this.text2 = this.text2.slice(1, );
                 if (this.text2.length <= this.totalLength - this.maxFirstLength) {
