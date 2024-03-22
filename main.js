@@ -21,7 +21,7 @@ class Game{
         this.mistakes = 0;
         this.written = this.text1.length;
         this.textLength = this.text2.length;
-        this.fraction = this.rounded((this.written)/(this.textLength)) * 100
+        this.fraction = this.rounded((this.written)/(this.textLength))
         this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
 
 
@@ -30,7 +30,7 @@ class Game{
 
         setInterval(() => {
             this.written = this.text1.length;
-            this.fraction = this.rounded((this.written)/(this.textLength)) * 100
+            this.fraction = this.rounded((this.written)/(this.textLength))
             this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
             this.speed = 0;
         }, 1000);
@@ -58,7 +58,7 @@ class Game{
     };
 
     rounded(number){
-        return Math.round(parseFloat(number) * 100) / 100;
+        return Math.round(number * 100) / 100;
     };
 };
 
