@@ -10,7 +10,6 @@ class Game{
         if (this.lable1 === null) throw new Error('Не найден элемент с id "lable1"');
         if (this.lable2 === null) throw new Error('Не найден элемент с id "lable2"');
 
-        this.simbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
         this.text1 = '';
         this.text2 = text;
 
@@ -21,43 +20,46 @@ class Game{
         this.mistakes = 0;
         this.written = this.text1.length;
         this.textLength = this.text2.length;
-        this.fraction = this.rounded((this.written)/(this.textLength))
+        this.fraction = this.rounded((this.written)/(this.textLength));
         this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
-
 
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
 
         setInterval(() => {
             this.written = this.text1.length;
-            this.fraction = this.rounded((this.written)/(this.textLength))
+            this.fraction = this.rounded((this.written)/(this.textLength));
             this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
             this.speed = 0;
         }, 1000);
 
         addEventListener("keypress", (event) => {
-            if (event.key === this.text2[0]) {
-                this.speed += 1;
-                this.text1 += this.text2[0];
-                this.text2 = this.text2.slice(1, );
-                if (this.text2.length <= this.totalLength - this.maxFirstLength) {
-                    this.lable1.innerHTML = this.text1.slice(-(this.maxFirstLength + this.textLast), );
-                    this.textLast++;
-                } else {
-                    this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
-                };
-                if (this.text1.length < this.maxFirstLength) {
-                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text1.length);
-                } else{
-                    this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
-                };
-            } else if (this.simbols.indexOf(event.key) === -1) {
-                this.mistakes++;
-            };
+            this.onKeypress(event.key);
         });
     };
 
-    rounded(number){
+    onKeypress(pressed) {
+        if (pressed === this.text2[0]) {
+            this.speed += 1;
+            this.text1 += this.text2[0];
+            this.text2 = this.text2.slice(1, );
+            if (this.text2.length <= this.totalLength - this.maxFirstLength) {
+                this.lable1.innerHTML = this.text1.slice(-(this.maxFirstLength + this.textLast), );
+                this.textLast++;
+            } else {
+                this.lable1.innerHTML = this.text1.slice(-this.maxFirstLength, );
+            };
+            if (this.text1.length < this.maxFirstLength) {
+                this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.text1.length);
+            } else {
+                this.lable2.innerHTML = this.text2.slice(0, this.totalLength - this.maxFirstLength);
+            };
+        } else {
+            this.mistakes++;
+        };
+    };
+
+    rounded(number) {
         return Math.round(number * 100) / 100;
     };
 };
