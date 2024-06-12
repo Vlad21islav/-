@@ -26,7 +26,11 @@ class Game{
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
 
-        setInterval(() => {
+        const printInfo = setInterval(() => {
+            if (this.written === this.textLength) {
+                clearInterval(printInfo);
+                removeEventListener("keypress");
+            };
             this.written = this.text1.length;
             this.fraction = this.rounded((this.written)/(this.textLength));
             this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
@@ -60,7 +64,7 @@ class Game{
     };
 
     rounded(number) {
-        return Math.round(number * 100) / 100;
+        return Math.round(number * 100);
     };
 };
 
