@@ -26,18 +26,14 @@ class Game{
         this.lable1.innerHTML = this.text1;
         this.lable2.innerHTML = this.text2.slice(0, this.totalLength);
 
-        const printInfo = setInterval(() => {
-            if (this.written === this.textLength) {
-                clearInterval(printInfo);
-                removeEventListener("keypress");
-            };
+        this.printInfo = setInterval(() => {
             this.written = this.text1.length;
             this.fraction = this.rounded((this.written)/(this.textLength));
             this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
             this.speed = 0;
         }, 1000);
 
-        addEventListener("keypress", (event) => {
+        this.isPressed = addEventListener("keypress", (event) => {
             this.onKeypress(event.key);
         });
     };
@@ -60,6 +56,10 @@ class Game{
             };
         } else {
             this.mistakes++;
+        };
+        if (this.written === this.textLength) {
+            clearInterval(this.printInfo);
+            removeEventListener("keypress", this.isPressed);
         };
     };
 
