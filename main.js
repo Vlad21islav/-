@@ -20,7 +20,7 @@ class Game{
         this.mistakes = 0;
         this.written = this.text1.length;
         this.textLength = this.text2.length;
-        this.fraction = this.rounded((this.written)/(this.textLength));
+        this.fraction = this.percentageOfTheNumber(this.written, this.textLength);
         this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
 
         this.lable1.innerHTML = this.text1;
@@ -28,12 +28,12 @@ class Game{
 
         this.printInfo = setInterval(() => {
             this.written = this.text1.length;
-            this.fraction = this.rounded((this.written)/(this.textLength));
+            this.fraction = this.percentageOfTheNumber(this.written, this.textLength);
             this.info.innerHTML = `написано: ${this.written}/${this.textLength} символов, доля: ${this.fraction}%, скорость: ${this.speed} знаков/секунду, ошибок: ${this.mistakes}`;
             this.speed = 0;
         }, 1000);
 
-        this.isPressed = addEventListener("keypress", (event) => {
+        addEventListener("keypress", (event) => {
             this.onKeypress(event.key);
         });
     };
@@ -59,12 +59,14 @@ class Game{
         };
         if (this.written === this.textLength) {
             clearInterval(this.printInfo);
-            removeEventListener("keypress", this.isPressed);
+            removeEventListener("keypress", (event) => {
+                this.onKeypress(event.key);
+            });
         };
     };
 
-    rounded(number) {
-        return Math.round(number * 100);
+    percentageOfTheNumber(number1, number2) {
+        return Math.round((number1 / number2) * 100);
     };
 };
 
