@@ -33,9 +33,7 @@ class Game{
             this.speed = 0;
         }, 1000);
 
-        addEventListener("keypress", (event) => {
-            this.onKeypress(event.key);
-        });
+        addEventListener("keypress", this.pressedButton, true);
     };
 
     onKeypress(pressed) {
@@ -59,14 +57,16 @@ class Game{
         };
         if (this.written === this.textLength) {
             clearInterval(this.printInfo);
-            removeEventListener("keypress", (event) => {
-                this.onKeypress(event.key);
-            });
+            removeEventListener("keypress", this.pressedButton, true);
         };
     };
 
     percentageOfTheNumber(number1, number2) {
         return Math.round((number1 / number2) * 100);
+    };
+
+    pressedButton(event) {
+        this.onKeypress(event.key);
     };
 };
 
