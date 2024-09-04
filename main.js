@@ -65,7 +65,7 @@ class Game{
         return Math.round((number1 / number2) * 100);
     };
 
-    pressedButton(event) {
+    pressedButton = (event) => {
         this.onKeypress(event.key);
     };
 };
