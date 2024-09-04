@@ -14,3 +14,8 @@ body {
 #lable2 {
     color: green;
 }
+
+#separator {
+    font-weight: 900;
+    color: black;
+}
