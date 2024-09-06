@@ -33,10 +33,11 @@ class Game{
             this.speed = 0;
         }, 1000);
 
-        addEventListener("keypress", this.pressedButton, true);
+        addEventListener("keypress", this.onKeypress, true);
     };
 
-    onKeypress(pressed) {
+    onKeypress = (event) => {
+        let pressed = event.key;
         if (pressed === this.text2[0]) {
             this.speed += 1;
             this.text1 += this.text2[0];
@@ -57,7 +58,7 @@ class Game{
         };
         if (this.written === this.textLength) {
             clearInterval(this.printInfo);
-            removeEventListener("keypress", this.pressedButton, true);
+            removeEventListener("keypress", this.onKeypress, true);
         };
     };
 
@@ -65,9 +66,6 @@ class Game{
         return Math.round((number1 / number2) * 100);
     };
 
-    pressedButton = (event) => {
-        this.onKeypress(event.key);
-    };
 };
 
 new Game(text);
