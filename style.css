@@ -1,11 +1,11 @@
-.all {
-    text-align: center;
-    font-size: 150%;
-}   
-
 body {
     background-color: rgb(223, 223, 231);
     color: goldenrod;
+    text-align: center;
+    font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #lable1 {
@@ -19,4 +19,18 @@ body {
 #separator {
     font-weight: 900;
     color: black;
+}
+
+input, button {
+    display: block;
+    font-size: 18px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
 }
