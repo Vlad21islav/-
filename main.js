@@ -78,7 +78,7 @@ class Game{
 function start() {
     document.getElementById("separator").innerHTML = "|"
     document.getElementById("btn").classList = "hidden"
-    document.getElementById('data').innerHTML = ''
+    document.getElementById('records').innerHTML = ''
     new Game(text);
 }
 
@@ -91,7 +91,7 @@ function printCookies() {
             otv += document.cookie[i]
         }
     }
-    document.getElementById('data').innerHTML = `<pre>Ваш рекорд:\n${otv}</pre>`
+    document.getElementById('records').innerHTML = `<pre>Ваши рекорд:\n${otv}</pre>`
 }
 
 if (document.cookie) {
