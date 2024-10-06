@@ -57,6 +57,8 @@ class Game{
             this.mistakes++;
         };
         if (this.written >= this.textLength) {
+            document.cookie += `nошибок: ${this.mistakes - 1}`
+            printCookies()
             document.getElementById("btn").classList = ""
             document.getElementById("separator").innerHTML = ""
             document.getElementById('info').innerHTML = ""
@@ -76,5 +78,22 @@ class Game{
 function start() {
     document.getElementById("separator").innerHTML = "|"
     document.getElementById("btn").classList = "hidden"
+    document.getElementById('data').innerHTML = ''
     new Game(text);
+}
+
+function printCookies() {
+    let otv = ''
+    for (let i = 0; i <= document.cookie.length - 1; i++) {
+        if (document.cookie[i] == 'n') {
+            otv += '\n'
+        } else {
+            otv += document.cookie[i]
+        }
+    }
+    document.getElementById('data').innerHTML = `<pre>Ваш рекорд:\n${otv}</pre>`
+}
+
+if (document.cookie) {
+    printCookies()
 }
