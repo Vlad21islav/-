@@ -94,6 +94,6 @@ function printCookies() {
     document.getElementById('records').innerHTML = `<pre>Ваши рекорд:\n${otv}</pre>`
 }
 
-if (document.cookie) {
+if (document.cookie && document.cookie != 'z') {
     printCookies()
 }
