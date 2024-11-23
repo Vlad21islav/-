@@ -57,8 +57,9 @@ class Game{
             this.mistakes++;
         };
         if (this.written >= this.textLength) {
-            document.cookie += `nошибок: ${this.mistakes - 1}`
-            printCookies()
+            let last_mistakes = localStorage.getItem('mistakes')
+            localStorage.setItem('mistakes', last_mistakes + `nошибок: ${this.mistakes - 1}`);
+            printStorage()
             document.getElementById("btn").classList = ""
             document.getElementById("separator").innerHTML = ""
             document.getElementById('info').innerHTML = ""
@@ -82,18 +83,13 @@ function start() {
     new Game(text);
 }
 
-function printCookies() {
-    let otv = ''
-    for (let i = 0; i <= document.cookie.length - 1; i++) {
-        if (document.cookie[i] == 'n') {
-            otv += '\n'
-        } else {
-            otv += document.cookie[i]
-        }
-    }
+function printStorage() {
+    let last_mistakes = localStorage.getItem('mistakes')
+    if (last_mistakes != undefined && last_mistakes != '') {
+        let otv = last_mistakes.split('n').sort().join('\n')
     document.getElementById('records').innerHTML = `<pre>Ваши рекорд:\n${otv}</pre>`
+    }
 }
 
-if (document.cookie && document.cookie != 'z') {
-    printCookies()
-}
+printStorage()
+
