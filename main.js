@@ -58,6 +58,9 @@ class Game{
         };
         if (this.written >= this.textLength) {
             let last_mistakes = localStorage.getItem('mistakes')
+            if (!last_mistakes) {
+                last_mistakes = ''
+            }
             localStorage.setItem('mistakes', last_mistakes + `nошибок: ${this.mistakes - 1}`);
             printStorage()
             document.getElementById("btn").classList = ""
