@@ -89,8 +89,8 @@ function start() {
 function printStorage() {
     let last_mistakes = localStorage.getItem('mistakes')
     if (last_mistakes != undefined && last_mistakes != '') {
-        let otv = last_mistakes.split('n').sort().join('\n')
-    document.getElementById('records').innerHTML = `<pre>Ваши рекорд:\n${otv}</pre>`
+        let otv = last_mistakes.split('n').sort().reverse().join('\n')
+    document.getElementById('records').innerHTML = `<pre>Ваш рекорд:\n${otv}</pre>`
     }
 }
 
