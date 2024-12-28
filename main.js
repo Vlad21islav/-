@@ -89,7 +89,16 @@ function start() {
 function printStorage() {
     let last_mistakes = localStorage.getItem('mistakes')
     if (last_mistakes != undefined && last_mistakes != '') {
-        let otv = last_mistakes.split('n').sort((a, b) => b - a).join('\n')
+        let otv = last_mistakes.split('n')
+        let numbers = []
+        let strings = []
+
+        otv.forEach(e => (isNaN(e) ? strings : numbers).push(e))
+
+        numbers = numbers.sort((a,b) => Number(a) - Number(b))
+        strings = strings.sort()
+
+        otv = numbers.concat( strings ).join('\n')
     document.getElementById('records').innerHTML = `<pre>Ваш рекорд:\n${otv}</pre>`
     }
 }
